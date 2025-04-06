@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beth Maran</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .custom-rounded {
+            border-radius: 50% 20% / 10% 40%;
+        }
+        .commentator-card {
+            transition: all 0.3s ease;
+        }
+        .commentator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .gemara-texture {
+            background-image: url('img/guemara.jpg');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+        .page-transition {
+            transition: opacity 0.3s ease;
+        }
+        .hidden-page {
+            opacity: 0;
+            display: none;
+        }
+        .visible-page {
+            opacity: 1;
+            display: block;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header -->
+    <header class="bg-blue-900 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full mr-4 flex items-center justify-center">
+                        <i class="fas fa-torah text-blue-900 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-3xl font-bold">Beth Maran</h1>
+                    </div>
+                </div>
+                <nav>
+                    <ul class="flex space-x-1 md:space-x-6">
+                        <li><button onclick="showPage('home')" class="px-3 py-2 rounded hover:bg-blue-800 transition font-medium">Accueil</button></li>
+                        <li><button onclick="showPage('presentation')" class="px-3 py-2 rounded hover:bg-blue-800 transition font-medium">Présentation</button></li>
+                        <li><button onclick="showPage('drachot')" class="px-3 py-2 rounded hover:bg-blue-800 transition font-medium">Drachot</button></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contact Card -->
+    <div class="container mx-auto px-4 py-4">
+        <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-4 sm:space-y-0">
+            <!-- Profil -->
+            <div class="flex items-center">
+                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                    <i class="fas fa-user-tie text-blue-700"></i>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg sm:text-base">Rav Jeremy Fellous</h4>
+                    <p class="text-gray-600 text-sm">Roch Kollel - Beth Maran</p>
+                </div>
+            </div>
+    
+            <!-- Coordonnées -->
+            <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-4 w-full sm:w-auto">
+                <a href="tel:+33612345678" class="flex items-center text-blue-700 hover:text-blue-900 mb-2 sm:mb-0">
+                    <i class="fas fa-phone-alt mr-2"></i>
+                    <span>+33 6 12 34 56 78</span>
+                </a>
+                <a href="https://wa.me/33612345678" target="_blank"
+                   class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full flex items-center justify-center">
+                    <i class="fab fa-whatsapp mr-2"></i>
+                    <span>WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Home Page -->
+        <div id="home-page" class="page-transition visible-page">
+            <!-- Carousel -->
+            <div class="relative overflow-hidden rounded-xl shadow-xl mb-12">
+                <div class="carousel-container relative h-96">
+                    <div class="carousel-slide absolute inset-0 w-full h-full flex items-center justify-center transition-opacity duration-500 opacity-100">
+                        <div class="absolute inset-0 bg-black opacity-40"></div>
+                        <img src="img/téléchargement.jpg" alt="Rabbi Ovadia Yossef" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+                            <div class="text-white max-w-3xl">
+                                <h2 class="text-4xl md:text-5xl font-bold mb-4">Kollel Beth Maran</h2>
+                                <p class="text-xl md:text-2xl mb-6">Étude de la Masekhet Kiddouchin</p>
+                                <button onclick="showPage('presentation')" class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-3 px-6 rounded-full transition transform hover:scale-105">
+                                    Découvrir notre Kollel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide absolute inset-0 w-full h-full flex items-center justify-center transition-opacity duration-500 opacity-0">
+                        <div class="absolute inset-0 bg-black opacity-40"></div>
+                        <img src="img/guemara.jpg" alt="Guemara Kiddouchine" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+                            <div class="text-white max-w-3xl">
+                                <h2 class="text-4xl md:text-5xl font-bold mb-4">Iyoun Tounsi</h2>
+                                <p class="text-xl md:text-2xl mb-6">Approfondissement des commentaires traditionnels sefarade</p>
+                                <button onclick="showPage('presentation')" class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-3 px-6 rounded-full transition transform hover:scale-105">
+                                    Nos méthodes d'étude
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+                    <button onclick="goToSlide(0)" class="w-3 h-3 rounded-full bg-white bg-opacity-70 hover:bg-opacity-100 focus:outline-none"></button>
+                    <button onclick="goToSlide(1)" class="w-3 h-3 rounded-full bg-white bg-opacity-40 hover:bg-opacity-100 focus:outline-none"></button>
+                </div>
+            </div>
+
+            <!-- About Section -->
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+                <h2 class="text-3xl font-bold mb-6 text-center text-blue-900">À propos du Kollel Beth Maran</h2>
+                
+                <div class="space-y-6 text-gray-700">
+                    <p class="text-lg">
+                        Le Kollel Beth Maran est un lieu d'étude dédié à l'approfondissement de la Torah et du Talmud selon la tradition séfarade (iyoun tounsi). Sous la direction du Rav Jeremy Fellous, les sessions d'étude se déroulent tous les jours du lundi au jeudi, de 9h30 à 13h00.
+                    </p>
+                    
+                    <p class="text-lg">
+                        Pour cette nouvelle année d'étude, nous nous concentrons sur la Massekhet Kidouchin, un traité central du Talmud. Nous explorons les textes avec un regard en profondeur, en nous appuyant sur les grands commentateurs classiques comme le Maarcha et le Maaram.
+                    </p>
+                    
+                    <p class="text-lg">
+                        Nous étudions principalement les enseignements des grands rabbanim séfarades, tels que Michmerot Kehouna et d'autres sages d'Afrique du Nord. Cette approche nous permet de maintenir une connexion avec la richesse intellectuelle et spirituelle de la tradition séfarade.
+                    </p>
+                    
+                    <p class="text-lg">
+                        En parallèle, nous étudions également les responsa du Rav Ovadia Yossef (זצ״ל), à travers ses œuvres majeures, Yabia Omer et Yehavé Daat. Ces responsa nous permettent de mieux comprendre les applications halakhiques dans le monde moderne, tout en restant profondément ancrés dans la tradition séfarade.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Map Section -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold mb-6 text-center text-blue-900">Nous trouver</h2>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="w-full md:w-1/2 h-80">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2623.789122054128!2d2.378015315675224!3d48.88666817928945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1a06e2b4a9%3A0x1c1a1b1b1b1b1b1b!2s110%20Rue%20de%20l&#39;Ourcq%2C%2075019%20Paris!5e0!3m2!1sfr!2sfr!4v1620000000000!5m2!1sfr!2sfr" 
+                                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                        <div class="w-full md:w-1/2 p-6 bg-blue-50 flex flex-col justify-center">
+                            <h3 class="text-2xl font-bold mb-4 text-blue-900">Adresse du Kollel</h3>
+                            <p class="text-lg mb-4"><i class="fas fa-map-marker-alt text-blue-700 mr-2"></i> 110 Rue de l'Ourcq, 75019 Paris</p>
+                            <p class="text-lg mb-4"><i class="fas fa-subway text-blue-700 mr-2"></i> Métro: Crimée (ligne 7)</p>
+                            <p class="text-lg mb-4"><i class="fas fa-bus text-blue-700 mr-2"></i> Bus: 54, 60</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Presentation Page -->
+        <div id="presentation-page" class="page-transition hidden-page">
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold mb-6 text-center text-blue-900">Présentation du Kollel</h2>
+                
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="w-full md:w-1/3">
+                            <img src="img/3.jpg" alt="Rabbi Ovadia Yossef" class="w-full h-full object-cover">
+                        </div>
+                        <div class="w-full md:w-2/3 p-6">
+                            <h3 class="text-2xl font-bold mb-4 text-blue-900">Au nom de Rabbi Ovadia Yossef zatsal</h3>
+                            <p class="text-gray-700 mb-4">
+                                Le Kollel Beth Maran a été établi pour honorer et perpétuer l'héritage intellectuel et spirituel de Rabbi Ovadia Yosef זצ״ל, une figure éminente du judaïsme séfarade contemporain.<br><br>
+                            
+                                Né en 1920 à Bagdad et ayant immigré en Israël dans son enfance, il a consacré sa vie à l'étude approfondie de la Torah et à la diffusion de la halakha.<br>
+                                Son approche méthodique et encyclopédique a marqué des générations de rabbins et d'érudits, œuvrant pour unifier les pratiques halakhiques des communautés séfarades sous l'autorité du Shulchan Aroukh de Rabbi Yosef Karo, tout en tenant compte des réalités contemporaines.<br><br>
+                            
+                                Inspiré par cette vision, le Kollel Beth Maran se consacre à l'étude approfondie du Talmud, en mettant un accent particulier sur les commentaires et les traditions des sages tunisiens.<br>
+                                Cette orientation vise à préserver et revitaliser les méthodes d'étude propres aux communautés juives d'Afrique du Nord, notamment l'« Iyoun Tounsi ».<br><br>
+                            
+                                <strong>L'« Iyoun Tounsi » : une méthode d'étude distinctive</strong><br><br>
+                            
+                                L'« Iyoun Tounsi » est une approche traditionnelle tunisienne et séfarade de l'étude talmudique, caractérisée par une analyse minutieuse et critique du texte.<br>
+                                Elle met l'accent sur la compréhension approfondie des discussions talmudiques, en s'appuyant sur une analyse grammaticale et syntaxique rigoureuse.<br>
+                                Cette méthode accorde également une attention particulière aux nuances linguistiques et aux subtilités du raisonnement des sages.<br><br>
+                            
+                                Transmise par des figures rabbiniques éminentes de Tunisie, cette approche représente un héritage intellectuel précieux que le Kollel Beth Maran s'efforce de faire vivre.<br>
+                                Elle permet aux étudiants de se connecter à une tradition exigeante, tout en leur offrant des outils solides pour l'étude de la halakha et du Talmud.
+                            </p>
+                            
+                            <p class="text-gray-700">
+                                Notre étude se concentre sur Masekhet Kiddouchine, avec une approche approfondie (iyoun) 
+                                qui combine les méthodes classiques avec les perspectives spécifiques de nos grands maitres.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-900">Nos méthodes d'étude</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="text-xl font-semibold mb-3 text-blue-800"><i class="fas fa-search mr-2"></i>Iyun approfondi</h4>
+                            <p class="text-gray-700">
+                                L'approche d'iyoun consiste en une analyse détaillée et rigoureuse du texte talmudique, en examinant chaque mot et chaque phrase pour en extraire les significations.
+                                 Cette méthode favorise une compréhension exhaustive des discussions talmudiques et permet de saisir les nuances des débats entre les sages.
+                            </p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="text-xl font-semibold mb-3 text-blue-800"><i class="fas fa-layer-group mr-2"></i>Commentateurs tunisiens</h4>
+                            <p class="text-gray-700">
+                                Le Kollel accorde une importance particulière aux commentaires des sages tunisiens, tels que le "Michmeret Kehouna". Ces commentateurs offrent des perspectives uniques et souvent méconnues sur le Talmud,
+                                 reflétant la richesse intellectuelle et spirituelle des communautés séfarades. En intégrant ces commentaires, les étudiants enrichissent leur compréhension du Talmud et découvrent des approches interprétatives spécifiques à cette tradition.
+                            </p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="text-xl font-semibold mb-3 text-blue-800"><i class="fas fa-balance-scale mr-2"></i>Halakha pratique</h4>
+                            <p class="text-gray-700">
+                                L'étude ne se limite pas à la théorie ; elle vise également à déduire des lois pratiques à partir des discussions talmudiques. Une attention particulière est portée aux décisions halakhiques de Rabbi Ovadia Yosef, qui a su allier fidélité à la tradition et réponses adaptées aux défis contemporains.
+                                 Cette approche permet aux étudiants de relier l'étude académique à la pratique quotidienne de la halakha.
+                            </p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="text-xl font-semibold mb-3 text-blue-800"><i class="fas fa-users mr-2"></i>Havrouta</h4>
+                            <p class="text-gray-700">
+                                Étude en binôme (havrouta) pour favoriser l'échange et le débat.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold mb-6 text-center text-blue-900">Nos principaux commentateurs</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="commentator-card bg-white p-6 rounded-lg shadow-md text-center">
+                            <div class="w-24 h-24 bg-blue-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <i class="fas fa-book text-blue-700 text-3xl"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold mb-2 text-blue-800">Maarcha</h4>
+                            <p class="text-gray-700 text-sm">
+                                Le Maarcha (Rabbi Shmuel Eliezer Edels) est un commentaire classique qui analyse 
+                                les discussions talmudiques avec une grande profondeur.
+                            </p>
+                        </div>
+                        <div class="commentator-card bg-white p-6 rounded-lg shadow-md text-center">
+                            <div class="w-24 h-24 bg-blue-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <i class="fas fa-book text-blue-700 text-3xl"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold mb-2 text-blue-800">Maaram</h4>
+                            <p class="text-gray-700 text-sm">
+                                Le Maaram (Rabbi Meir Lublin) apporte des éclaircissements précieux sur les points 
+                                difficiles du Talmud.
+                            </p>
+                        </div>
+                        <div class="commentator-card bg-white p-6 rounded-lg shadow-md text-center">
+                            <div class="w-24 h-24 bg-blue-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <i class="fas fa-book text-blue-700 text-3xl"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold mb-2 text-blue-800">Maarchal</h4>
+                            <p class="text-gray-700 text-sm">
+                                Le Maarchal (Rabbi Shlomo Luria) est connu pour ses analyses rigoureuses et ses 
+                                critiques des commentateurs précédents.
+                            </p>
+                        </div>
+                        <div class="commentator-card bg-white p-6 rounded-lg shadow-md text-center">
+                            <div class="w-24 h-24 bg-blue-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <i class="fas fa-book text-blue-700 text-3xl"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold mb-2 text-blue-800">Michmerot Kehouna</h4>
+                            <p class="text-gray-700 text-sm">
+                                Commentaire tunisien important qui apporte des perspectives uniques sur le texte 
+                                talmudique, particulièrement valorisé dans notre Kollel.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Drachot Page -->
+        <div id="drachot-page" class="page-transition hidden-page">
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold mb-6 text-center text-blue-900">Drachot - Questions et Réponses</h2>
+                <p class="text-center text-gray-600 mb-8">Cette section contient les questions posées au Rav et ses réponses détaillées.</p>
+                
+                <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+                    <div class="flex items-start mb-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-blue-800 mb-2">Question de halakha</h3>
+                            <p class="text-gray-700 mb-2">hallel a pessah</p>
+                            <p class="text-gray-800 bg-gray-50 p-4 rounded-lg">
+                                Il est d’usage dans les communautés séfarades de reciter le hallel complet avec bénédiction les soirs du seder de pessah.
+                                 D’où vient cet usage ? Quelle en est sa raison ? Est-ce que les femmes également sont tenues de le reciter ?
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mr-4">
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-blue-800 mb-2">Réponse du Rav</h3>
+                            <p class="text-gray-800 bg-blue-50 p-4 rounded-lg">
+                                Le Talmud de Jérusalem (Soucca chap. 4 halacha 5) enseigne qu’il y a dans l’année 18 jours et 1 nuit dans lesquelles on récite le hallel (complet) : « les 8 jours de Souccot, les 8 jours de Hanouka, le jour de Chavouot, le premier soir de Pessah et son lendemain matin ». <br><br>
+                            
+                                Cet enseignement est repris également dans le traité Sofrim (chap. 20 halacha 9) et il en ressort qu’on le lit les deux premiers soirs en dehors d’Israël. <br><br>
+                            
+                                Ainsi, le Choulhan Aroukh (chap. 487 parag. 2) écrit : « Le 1er soir de Pessah on lit le hallel complet en communauté à la synagogue, avec les bénédictions du début et de la fin, et en dehors d’Israël également le 2e soir ». <br>
+                                Le Rama (qui commente pour les communautés ashkénazes) souligne qu’ils n’ont pas cet usage. <br><br>
+                            
+                                La raison de cet usage est essentiellement liée au miracle de la sortie d’Égypte, qui nous a libérés de l’esclavage pour nous faire entrer au service d’Hashem. <br>
+                                Comme il est rapporté dans le Talmud de Jérusalem Pessahim (chap. 5 halacha 5) : <br>
+                                Le soir de la sortie d’Égypte, Hashem fit retentir la voix du Pharaon dans toute l’Égypte, disant : « Sortez de chez moi, à partir d’aujourd’hui vous êtes les serviteurs d’Hashem ». <br>
+                                À ce moment-là, le peuple se mit à chanter : « Hallelouya, hallelou avdey Hashem » — « Louangez, serviteurs d’Hashem ! » (premier chapitre du Hallel). <br><br>
+                            
+                                Et à chaque génération, chacun doit se considérer comme s’il sortait lui-même d’Égypte. <br><br>
+                            
+                                Une autre raison est rapportée dans le Sefer Hamikhtam (Pessahim 116b) : <br>
+                                Le hallel est lu en souvenir du hallel récité pendant l’offrande du korban Pessah au Temple. <br><br>
+                            
+                                Le Gaon de Vilna, dans ses commentaires sur les lois de Hanouka (chap. 571 parag. 7), explique que l’usage d’allumer les bougies de Hanouka à la synagogue pour diffuser le miracle s’appuie sur la récitation du hallel le 1er soir de Pessah, récitée en communauté pour le même objectif. <br>
+                                A priori, cela pourrait laisser penser que le hallel ne se récite que dans un cadre communautaire. <br><br>
+                            
+                                À cela, le Rav Ovadia Yossef זצ״ל, dans ses responsa Yehavé Daat (tome 5, question 34), répond que ce n’est pas le cas. <br>
+                                Il s’appuie notamment sur les paroles du Rav Hida זצ״ל dans Birkey Yossef : <br>
+                                Une personne faisant partie d’une communauté où le hallel n’est pas récité le soir de Pessah peut tout de même le réciter discrètement chez elle. <br><br>
+                            
+                                Le Téchouva Méahava (tome 1, question 90) rapporte également que son maître, le Noda Bihouda, récitait le hallel après la prière du soir de Pessah, même seul, bien que cela ne soit pas l’usage de sa communauté. <br><br>
+                            
+                                Il ressort de là qu’une femme séfarade, même si elle ne se rend pas à la synagogue, doit également réciter le hallel complet avec bénédiction le 1er et le 2e soir de Pessah avant de commencer le seder. <br>
+                                Et cela parce que les femmes sont astreintes aux mitsvot du soir de Pessah au même titre que les hommes, car elles ont elles aussi fait partie du miracle. <br>
+                                Voir Choulhan Aroukh (chap. 472 parag. 14).
+                            </p>
+                                                      
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-xl font-bold mb-2">Beth Maran</h3>
+                    <p class="text-blue-200">Kollel</p>
+                </div>
+                
+                <div class="mb-4 md:mb-0">
+                    <a href="https://wa.me/33612345678" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full flex items-center">
+                        <i class="fab fa-whatsapp mr-2"></i>
+                        <span>Contacter le Rav par WhatsApp</span>
+                    </a>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <p class="text-blue-200">© 2025 Beth Maran. Tous droits réservés.</p>
+                    <p class="text-blue-300 text-sm"></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Carousel functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        
+        function showSlide(n) {
+            slides.forEach(slide => {
+                slide.style.opacity = '0';
+            });
+            slides[n].style.opacity = '1';
+            currentSlide = n;
+            
+            // Update indicators
+            const indicators = document.querySelectorAll('.carousel-container + div button');
+            indicators.forEach((indicator, index) => {
+                if(index === n) {
+                    indicator.classList.remove('bg-opacity-40');
+                    indicator.classList.add('bg-opacity-70');
+                } else {
+                    indicator.classList.remove('bg-opacity-70');
+                    indicator.classList.add('bg-opacity-40');
+                }
+            });
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        function goToSlide(n) {
+            showSlide(n);
+        }
+        
+        // Auto-advance carousel
+        setInterval(nextSlide, 5000);
+        
+        // Page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('[id$="-page"]').forEach(page => {
+                page.classList.remove('visible-page');
+                page.classList.add('hidden-page');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId + '-page').classList.remove('hidden-page');
+            document.getElementById(pageId + '-page').classList.add('visible-page');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Initialize - show home page
+        document.addEventListener('DOMContentLoaded', function() {
+            showSlide(0);
+            showPage('home');
+        });
+    </script>
+</body>
+</html>
